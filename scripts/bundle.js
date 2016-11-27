@@ -58,28 +58,31 @@
 	
 	var _reactRedux = __webpack_require__(235);
 	
-	var _store = __webpack_require__(257);
+	__webpack_require__(257);
+	
+	var _store = __webpack_require__(261);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _Login = __webpack_require__(261);
+	var _Login = __webpack_require__(265);
 	
 	var _Login2 = _interopRequireDefault(_Login);
 	
-	var _LoggedIn = __webpack_require__(262);
+	var _LoggedIn = __webpack_require__(266);
 	
 	var _LoggedIn2 = _interopRequireDefault(_LoggedIn);
 	
-	var _NavSection = __webpack_require__(263);
+	var _NavSection = __webpack_require__(267);
 	
 	var _NavSection2 = _interopRequireDefault(_NavSection);
 	
-	var _FindFood = __webpack_require__(264);
+	var _FindFood = __webpack_require__(268);
 	
 	var _FindFood2 = _interopRequireDefault(_FindFood);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	//import 'bootstrap/dist/css/bootstrap.css';
 	var App = function App(props) {
 	  return _react2.default.createElement(
 	    _reactRedux.Provider,
@@ -87,9 +90,6 @@
 	    props.children
 	  );
 	};
-	//import 'bootstrap/dist/css/bootstrap.css';
-	//import './App.css';
-	
 	
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
@@ -27201,9 +27201,7 @@
 	  }
 	
 	  Provider.prototype.render = function render() {
-	    var children = this.props.children;
-	
-	    return _react.Children.only(children);
+	    return _react.Children.only(this.props.children);
 	  };
 	
 	  return Provider;
@@ -27211,10 +27209,12 @@
 	
 	exports["default"] = Provider;
 	
+	
 	if (process.env.NODE_ENV !== 'production') {
 	  Provider.prototype.componentWillReceiveProps = function (nextProps) {
 	    var store = this.store;
 	    var nextStore = nextProps.store;
+	
 	
 	    if (store !== nextStore) {
 	      warnAboutReceivingStore();
@@ -27268,8 +27268,9 @@
 	  }
 	  /* eslint-enable no-console */
 	  try {
-	    // This error was thrown as a convenience so that you can use this stack
-	    // to find the callsite that caused this warning to fire.
+	    // This error was thrown as a convenience so that if you enable
+	    // "break on all exceptions" in your console,
+	    // it would pause the execution at this line.
 	    throw new Error(message);
 	    /* eslint-disable no-empty */
 	  } catch (e) {}
@@ -27282,9 +27283,10 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
+	exports.__esModule = true;
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	exports.__esModule = true;
 	exports["default"] = connect;
 	
 	var _react = __webpack_require__(1);
@@ -27353,12 +27355,12 @@
 	var nextVersion = 0;
 	
 	function connect(mapStateToProps, mapDispatchToProps, mergeProps) {
-	  var options = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
+	  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 	
 	  var shouldSubscribe = Boolean(mapStateToProps);
 	  var mapState = mapStateToProps || defaultMapStateToProps;
 	
-	  var mapDispatch = undefined;
+	  var mapDispatch = void 0;
 	  if (typeof mapDispatchToProps === 'function') {
 	    mapDispatch = mapDispatchToProps;
 	  } else if (!mapDispatchToProps) {
@@ -27368,10 +27370,10 @@
 	  }
 	
 	  var finalMergeProps = mergeProps || defaultMergeProps;
-	  var _options$pure = options.pure;
-	  var pure = _options$pure === undefined ? true : _options$pure;
-	  var _options$withRef = options.withRef;
-	  var withRef = _options$withRef === undefined ? false : _options$withRef;
+	  var _options$pure = options.pure,
+	      pure = _options$pure === undefined ? true : _options$pure,
+	      _options$withRef = options.withRef,
+	      withRef = _options$withRef === undefined ? false : _options$withRef;
 	
 	  var checkMergedEquals = pure && finalMergeProps !== defaultMergeProps;
 	
@@ -27590,11 +27592,12 @@
 	      };
 	
 	      Connect.prototype.render = function render() {
-	        var haveOwnPropsChanged = this.haveOwnPropsChanged;
-	        var hasStoreStateChanged = this.hasStoreStateChanged;
-	        var haveStatePropsBeenPrecalculated = this.haveStatePropsBeenPrecalculated;
-	        var statePropsPrecalculationError = this.statePropsPrecalculationError;
-	        var renderedElement = this.renderedElement;
+	        var haveOwnPropsChanged = this.haveOwnPropsChanged,
+	            hasStoreStateChanged = this.hasStoreStateChanged,
+	            haveStatePropsBeenPrecalculated = this.haveStatePropsBeenPrecalculated,
+	            statePropsPrecalculationError = this.statePropsPrecalculationError,
+	            renderedElement = this.renderedElement;
+	
 	
 	        this.haveOwnPropsChanged = false;
 	        this.hasStoreStateChanged = false;
@@ -28613,6 +28616,354 @@
 /* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(258);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(260)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./App.css", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./App.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 258 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(259)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".App {\n  text-align: center;\n}\n\n.App-logo {\n  animation: App-logo-spin infinite 20s linear;\n  height: 80px;\n}\n\n.App-header {\n  background-color: #222;\n  height: 150px;\n  padding: 20px;\n  color: white;\n}\n\n.App-intro {\n  font-size: large;\n}\n\n@keyframes App-logo-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n\nhtml, body {\n    margin:0;\n    padding:0;\n    /*background-color: rgb(0,107,255)*/\n}\n\n/*NavSection*/\n#header {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  background-color: rgba(0,107,255,.8);\n}\n\n#header {\n  display: flex;\n  flex: 4;\n  /*position: absolute;*/\n  height: 10%;\n  justify-content: center;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n#header-title {\n  color: white;\n  font-family: 'Lobster Two', cursive;\n  font-size: 60px;\n  margin-top: 5%;\n  margin-bottom: 5%;\n\n}\n.navbar {\n  display: flex;\n  justify-content: center;\n}\n\nnav navbar-nav {\n  float: none;\n  width: 330px;\n  margin-left: auto;\n  margin-right: auto;\n}\n\nli {\n  text-align: center;\n}\n\n#account {\n  float: right;\n}\n\n\n.navbar {\n  display: flex;\n  justify-content: center;\n}\n/*.navbar .navbar-nav, nav navbar-nav > li {\n  display: inline-block;\n  float: none;\n}\n\n.navbar .navbar-nav {\n  text-align: center;\n}*/\n/*End of NavSection*/\n\n/*Login section*/\n#login-background {\n  display: flex;\n  flex-direction: column;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background-color: rgb(0,107,255);\n}\n\n#title {\n  color: white;\n  font-size: 100px;\n  font-family: 'Lobster Two', cursive;\n\n  margin-left: auto;\n  margin-right: auto;\n  margin-top: 10%;\n  margin-bottom: 75px;\n}\n\n#login-form {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.form-group{\n  display: flex;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.login {\n  font-size: 16px;\n  font: helvetica;\n\n  width: 300px;\n  height: 50px;\n  min-width: 100px;\n\n  padding-left: 10px;\n  padding-right: 10px;\n\n  border-radius: 3px;\n  border: 1px solid white;\n\n  margin-left: auto;\n  margin-right: auto;\n}\n\n#login-button {\n  border-color: white;\n  margin-left: auto;\n  margin-right: auto;\n  width: 100px;\n  min-width: 10px;\n  /*flex-grow: 6;*/\n}\n\n#map {\n  display: flex;\n  justify-content: center;\n  margin-left: auto;\n  margin-right: auto;\n  height: 500px;\n  width: 50%;\n\n}\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 259 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 261 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -28621,11 +28972,11 @@
 	
 	var _redux = __webpack_require__(242);
 	
-	var _reduxHistoryTransitions = __webpack_require__(258);
+	var _reduxHistoryTransitions = __webpack_require__(262);
 	
 	var _reduxHistoryTransitions2 = _interopRequireDefault(_reduxHistoryTransitions);
 	
-	var _reducer = __webpack_require__(259);
+	var _reducer = __webpack_require__(263);
 	
 	var _reducer2 = _interopRequireDefault(_reducer);
 	
@@ -28639,7 +28990,7 @@
 	exports.default = store;
 
 /***/ },
-/* 258 */
+/* 262 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28717,7 +29068,7 @@
 	};
 
 /***/ },
-/* 259 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28726,7 +29077,7 @@
 	  value: true
 	});
 	
-	var _actions = __webpack_require__(260);
+	var _actions = __webpack_require__(264);
 	
 	var defaultState = { user: 'gilruben', password: 'nope' };
 	
@@ -28746,7 +29097,7 @@
 	exports.default = reducer;
 
 /***/ },
-/* 260 */
+/* 264 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -28776,7 +29127,7 @@
 	exports.log_in = log_in;
 
 /***/ },
-/* 261 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28789,9 +29140,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _actions = __webpack_require__(260);
+	var _actions = __webpack_require__(264);
 	
-	var _store = __webpack_require__(257);
+	var _store = __webpack_require__(261);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
@@ -28848,7 +29199,7 @@
 	exports.default = Login;
 
 /***/ },
-/* 262 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28861,7 +29212,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _NavSection = __webpack_require__(263);
+	var _NavSection = __webpack_require__(267);
 	
 	var _NavSection2 = _interopRequireDefault(_NavSection);
 	
@@ -28879,7 +29230,7 @@
 	exports.default = LoggedIn;
 
 /***/ },
-/* 263 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28967,7 +29318,7 @@
 	exports.default = NavSection;
 
 /***/ },
-/* 264 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28980,7 +29331,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Map = __webpack_require__(265);
+	var _Map = __webpack_require__(269);
 	
 	var _Map2 = _interopRequireDefault(_Map);
 	
@@ -29007,7 +29358,7 @@
 	exports.default = FindFood;
 
 /***/ },
-/* 265 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

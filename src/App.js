@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, Link, hashHistory} from 'react-router';
 import {Provider} from 'react-redux';
 //import 'bootstrap/dist/css/bootstrap.css';
-//import './App.css';
+import './App.css';
 import store from './store/store.js';
 import Login from './components/Login.jsx'
 import LoggedIn from './components/LoggedIn.jsx';

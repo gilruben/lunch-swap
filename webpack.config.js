@@ -1,3 +1,5 @@
+//var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   entry: "./src/App.js",
   output: {
@@ -16,11 +18,32 @@ module.exports = {
           presets: ['es2015', 'react']
           //transpiling & compilation
         }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css'//ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+      },
+      {
+        test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+        loader: 'file',
       }
     ]
   },
+  // postcss: function() {
+  //   return [
+  //     autoprefixer({
+  //       browsers: [
+  //         '>1%',
+  //         'last 4 versions',
+  //         'Firefox ESR',
+  //         'not ie < 9', // React doesn't support IE8 anyway
+  //       ]
+  //     }),
+  //   ];
+  // },
   devtool: 'source-map',
   resolve: {
     extensions: ["", ".js", ".jsx" ]
-  }
+  },
+  // plugins: [new ExtractTextPlugin('styles.css')]
 };

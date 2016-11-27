@@ -25,22 +25,10 @@ module.exports = {
       },
       {
         test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
-        loader: 'file',
+        loader: 'file'
       }
     ]
   },
-  // postcss: function() {
-  //   return [
-  //     autoprefixer({
-  //       browsers: [
-  //         '>1%',
-  //         'last 4 versions',
-  //         'Firefox ESR',
-  //         'not ie < 9', // React doesn't support IE8 anyway
-  //       ]
-  //     }),
-  //   ];
-  // },
   devtool: 'source-map',
   resolve: {
     extensions: ["", ".js", ".jsx" ]

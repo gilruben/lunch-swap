@@ -1,7 +1,5 @@
-//var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 module.exports = {
-  entry: "./src/App.js",
+  entry: "./frontend/App.js",
   output: {
     path: "./scripts",
     filename: "bundle.js",
@@ -10,8 +8,6 @@ module.exports = {
     loaders: [
       {
         test: [/\.jsx?$/, /\.js?$/],
-        //what problem is this solving?
-        //what is regex?
         exclude: /(node_modules)/,
         loader: 'babel',
         query: {
@@ -21,7 +17,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css'//ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+        loader: 'style!css'
       },
       {
         test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
@@ -32,6 +28,5 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ["", ".js", ".jsx" ]
-  },
-  // plugins: [new ExtractTextPlugin('styles.css')]
+  }
 };

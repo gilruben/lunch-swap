@@ -1,7 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router';
-//import 'bootstrap/dist/css/bootstrap.css';
-//import '../App.css'
 
 var NavSection = () => (
   <div id="nav-section">

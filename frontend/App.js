@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, IndexRoute, Link, hashHistory} from 'react-router';
+import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -19,7 +19,7 @@ const App = (props) => (
 )
 
 ReactDOM.render(
-  <Router history={hashHistory} >
+  <Router history={browserHistory} >
     <Route path="/" component={App}>
       <IndexRoute component={Login}/>
       <Route path="/logged-in/:user" component={LoggedIn}>

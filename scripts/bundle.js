@@ -94,7 +94,7 @@
 	
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
-	  { history: _reactRouter.hashHistory },
+	  { history: _reactRouter.browserHistory },
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: App },
@@ -29317,9 +29317,6 @@
 	var _reactRouter = __webpack_require__(172);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	//import 'bootstrap/dist/css/bootstrap.css';
-	//import '../App.css'
 	
 	var NavSection = function NavSection() {
 	  return _react2.default.createElement(

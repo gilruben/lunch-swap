@@ -5,6 +5,6 @@ import {hashHistory} from 'react-router';
 
 
 const enhancer = handleTransitions(hashHistory);
-const store = createStore(reducer, {user: 'gilruben', password: 'nope'}, enhancer);
+const store = createStore(reducer, {user: 'gilruben', password: 'nope'},  enhancer);
 
 export default store;

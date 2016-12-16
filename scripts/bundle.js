@@ -86,23 +86,31 @@
 	
 	var App = function App(props) {
 	  return _react2.default.createElement(
-	    _reactRedux.Provider,
-	    { store: _store2.default },
+	    'div',
+	    null,
+	    _react2.default.createElement(_NavSection2.default, null),
 	    props.children
 	  );
 	};
 	
+	// const verify = (nextState,replace) => {
+	//   let info = {user: 'gilruben', password: 'nope'}
+	//   if(){
+	//
+	//   }
+	// }
+	
 	_reactDom2.default.render(_react2.default.createElement(
-	  _reactRouter.Router,
-	  { history: _reactRouter.browserHistory },
+	  _reactRedux.Provider,
+	  { store: _store2.default },
 	  _react2.default.createElement(
-	    _reactRouter.Route,
-	    { path: '/', component: App },
-	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Login2.default }),
+	    _reactRouter.Router,
+	    { history: _reactRouter.browserHistory },
+	    _react2.default.createElement(_reactRouter.Route, { path: '/signin', component: _Login2.default }),
 	    _react2.default.createElement(
 	      _reactRouter.Route,
-	      { path: '/logged-in/:user', component: _LoggedIn2.default },
-	      _react2.default.createElement(_reactRouter.Route, { path: '/findfood', component: _FindFood2.default })
+	      { path: '/', component: App },
+	      _react2.default.createElement(_reactRouter.Route, { path: 'findfood', component: _FindFood2.default })
 	    )
 	  )
 	), document.getElementById('root'));
@@ -29148,7 +29156,7 @@
 	  value: true
 	});
 	
-	var _actions = __webpack_require__(271);
+	var _loginActions = __webpack_require__(271);
 	
 	var defaultState = { user: 'gilruben', password: 'nope' };
 	
@@ -29157,7 +29165,8 @@
 	  var action = arguments[1];
 	
 	  switch (action.type) {
-	    case _actions.LOG_IN:
+	    case _loginActions.LOG_IN:
+	
 	      console.log('Logging in');
 	      break;
 	    default:
@@ -29174,28 +29183,36 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
-	var LOG_IN = 'LOG_IN';
+	var LOG_IN = exports.LOG_IN = 'LOG_IN';
 	
-	var log_in = function log_in() {
-	    return {
-	        type: LOG_IN,
-	        payload: {
-	            userId: 'gilruben'
-	        },
-	        meta: {
-	            transition: function transition(prevState, nextState, action) {
-	                return {
-	                    pathname: '/logged-in/' + action.payload.userId
-	                };
-	            }
-	        }
-	    };
+	var log_in = exports.log_in = function log_in(isVerified) {
+	  return {
+	    type: LOG_IN,
+	    payload: isVerified
+	  };
 	};
 	
-	exports.LOG_IN = LOG_IN;
-	exports.log_in = log_in;
+	var loginAsync = exports.loginAsync = loginInfo = function (_loginInfo) {
+	  function loginInfo(_x) {
+	    return _loginInfo.apply(this, arguments);
+	  }
+	
+	  loginInfo.toString = function () {
+	    return _loginInfo.toString();
+	  };
+	
+	  return loginInfo;
+	}(function (dispatch) {
+	  $.ajax({
+	    url: '/auth/signin',
+	    type: 'POST',
+	    data: loginInfo
+	  }).done(function () {
+	    dispatch(log_in(data));
+	  });
+	});
 
 /***/ },
 /* 272 */
@@ -29211,7 +29228,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _actions = __webpack_require__(271);
+	var _loginActions = __webpack_require__(271);
 	
 	var _store = __webpack_require__(268);
 	
@@ -29226,7 +29243,8 @@
 	  },
 	  handleSubmit: function handleSubmit(event) {
 	    event.preventDefault();
-	    _store2.default.dispatch((0, _actions.log_in)());
+	    _store2.default.dispatch((0, _loginActions.log_in)());
+	    browserHistory.push('/');
 	  },
 	  handleChange: function handleChange(input, event) {
 	    if (input === 'un') {

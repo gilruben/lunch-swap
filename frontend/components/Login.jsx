@@ -1,5 +1,5 @@
 import React from 'react';
-import {log_in} from '../actions/actions.js';
+import {log_in} from '../actions/login-actions.js';
 import store from '../store/store.js';
 
 const Login = React.createClass({
@@ -9,6 +9,7 @@ const Login = React.createClass({
   handleSubmit(event) {
     event.preventDefault();
     store.dispatch(log_in());
+    browserHistory.push('/')
   },
   handleChange(input, event) {
     if(input === 'un'){

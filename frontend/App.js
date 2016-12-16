@@ -11,21 +11,30 @@ import NavSection from './components/NavSection.jsx'
 import FindFood from './components/FindFood.jsx'
 
 
+const App = (props) => {
+  return (
+    <div>
+      <NavSection/>
+      {props.children}
+    </div>
+  )
+}
 
-const App = (props) => (
-  <Provider store={store}>
-    {props.children}
-  </Provider>
-)
+// const verify = (nextState,replace) => {
+//   let info = {user: 'gilruben', password: 'nope'}
+//   if(){
+//
+//   }
+// }
 
 ReactDOM.render(
-  <Router history={browserHistory} >
-    <Route path="/" component={App}>
-      <IndexRoute component={Login}/>
-      <Route path="/logged-in/:user" component={LoggedIn}>
-        <Route path="/findfood" component={FindFood} />
+  <Provider store={store}>
+    <Router history={browserHistory} >
+      <Route path="/signin" component={Login} />
+      <Route  path="/" component={App}>
+        <Route path="findfood" component={FindFood} />
       </Route>
-    </Route>
-  </Router>,
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );

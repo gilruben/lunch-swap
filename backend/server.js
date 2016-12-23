@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const router = require('./routes');
 
 
-db.sequelize.sync({force: true}).then(() => {
+db.sequelize.sync().then(() => {
   console.log('db connection opened');
 
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,6 +15,7 @@ db.sequelize.sync({force: true}).then(() => {
 
   //api routes
   app.use('/api/user', router.user);
+  app.use('/api/friends', router.friend);
 
   //route to frontend
   app.get('/*', (req, res) => {

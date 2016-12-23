@@ -26,9 +26,10 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        User.belongsToMany(models.User, {
-          as: 'Friend',
-          through: "friends",
+
+        User.belongsToMany(User, {
+          as: 'friend',
+          through: "Friends",
           onDelete: "CASCADE"
         });
       }

@@ -5,7 +5,7 @@ export const log_in = (isVerified) => ({
     payload: isVerified
 })
 
-export const loginAsync = (loginInfo) = (dispatch) => {
+export const loginAsync = (loginInfo) => (dispatch) => {
   $.ajax({
     url: '/auth/signin',
     type: 'POST',

@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const db = require('./models');
 const app = express();
 const path = require('path')
@@ -11,6 +12,14 @@ db.sequelize.sync().then(() => {
 
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(express.static('scripts'));
+  app.use(session({
+    secret: 'midnight-snack',
+    resave: false,
+    saveUninitialized: false
+  }))
+
+  //authentication routes
+  app.use('/auth', router.auth);
 
 
   //api routes

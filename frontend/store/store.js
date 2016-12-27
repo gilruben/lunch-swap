@@ -1,10 +1,8 @@
-import { createStore, compose } from 'redux';
-import handleTransitions from 'redux-history-transitions';
-import reducer from '../reducers/reducer.js';
-import {hashHistory} from 'react-router';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import {mainReducer} from '../reducers/main-reducer';
 
 
-const enhancer = handleTransitions(hashHistory);
-const store = createStore(reducer, {user: 'gilruben', password: 'nope'},  enhancer);
+const store = createStore(mainReducer, applyMiddleware(thunk));
 
 export default store;

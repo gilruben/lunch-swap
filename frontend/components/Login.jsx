@@ -18,6 +18,8 @@ const Login = React.createClass({
     }
   },
   render() {
+    let loginMsg = this.props.loginMsg;
+
     return (
       <div id="login-background">
         <h1 id="title">Lunch Swap</h1>
@@ -30,7 +32,14 @@ const Login = React.createClass({
             <input onChange={this.handleChange.bind(this, 'pw')} className="login" type="password" placeholder="Password"/>
           </div>
 
-          <button id="login-button" type="submit" className="btn btn-primary">Log In</button>
+          <div id="login-msg">
+            <h4>{loginMsg ? loginMsg : null}</h4>
+          </div>
+
+          <div id="login-btn-container">
+            <button id="login-button" type="submit" className="btn btn-primary">Log In</button>
+          </div>
+
         </form>
       </div>
     )

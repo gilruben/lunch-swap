@@ -7,7 +7,7 @@ const getFriends = (req, res) => {
   let userId = req.params.userId;
 
 
-  db.sequelize.query(`SELECT "User"."id", "User"."username", "User"."email", ` +
+  db.sequelize.query(`SELECT "User"."id", "User"."email", ` +
     `"User"."first_name", "User"."last_name", "User"."createdAt", "User"."updatedAt", ` +
     `"Friends"."createdAt" AS "friends_since" FROM "Users" AS "User" ` +
     `INNER JOIN "Friends" AS "Friends" ON ("User"."id" = "Friends"."UserId" AND "Friends"."friendId" = ${userId}) OR` +

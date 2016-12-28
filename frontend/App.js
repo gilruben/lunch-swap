@@ -9,7 +9,7 @@ import LoginContainer from './containers/LoginContainer';
 import LoggedIn from './components/LoggedIn';
 import NavSection from './components/NavSection';
 import FindFood from './components/FindFood';
-import { verify } from './route-utils';
+import { verify, verifySignedIn } from './route-utils';
 
 
 const App = (props) => {
@@ -24,7 +24,7 @@ const App = (props) => {
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory} >
-      <Route path="/signin" component={LoginContainer} />
+      <Route path="/signin" component={LoginContainer} onEnter={verifySignedIn} />
       <Route path="/" component={App} onEnter={verify} >
         <Route path="findfood" component={FindFood} />
       </Route>

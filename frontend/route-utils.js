@@ -1,12 +1,9 @@
 import $ from 'jquery';
-import store from './store/store';
 
 //Verifies if the user is signed in. If so, whenever the user goes to the
 //'/signin' route, they will be redirected to the '/' route
 export const verifySignedIn = (nextState, replace, cb) => {
-  //debugger
   verify(nextState, replace, cb, '/findfood');
-  //cb();
 }
 
 

@@ -34,7 +34,6 @@ const verifyAuth = (req, res) => {
   } else {
     console.log('Unauthorized');
     res.sendStatus(401);
-    //res.redirect('/signin');
   }
 }
 

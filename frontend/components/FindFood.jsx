@@ -5,7 +5,7 @@ const FindFood = React.createClass ({
   getInitialState() {
     return {lat: null, lng: null}
   },
-  componentWillMount() {
+  componentDidMount() {
     navigator.geolocation.getCurrentPosition(this.updatePosition)
   },
   updatePosition(position) {
@@ -13,9 +13,12 @@ const FindFood = React.createClass ({
     this.setState({lat: position.coords.latitude, lng: position.coords.longitude})
   },
   render() {
+    let lat = this.state.lat;
+    let lng = this.state.lng;
+
     navigator.geolocation.watchPosition(this.updatePosition)
     return (
-      <Map lat={this.state.lat} lng={this.state.lng}/>
+      (lat && lng) ? <Map lat={this.state.lat} lng={this.state.lng}/> : null
     )
   }
 })

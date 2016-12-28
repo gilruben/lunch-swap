@@ -27,8 +27,15 @@ const logout = (req, res) => {
 }
 
 
-const verifyCred = (req, res) => {
-
+const verifyAuth = (req, res) => {
+  if(req.session.email){
+    console.log('Authorized');
+    res.sendStatus(200);
+  } else {
+    console.log('Unauthorized');
+    res.sendStatus(401);
+    //res.redirect('/signin');
+  }
 }
 
 
@@ -37,5 +44,8 @@ router.route('/login')
 
 router.route('/logout')
   .post(logout)
+
+router.route('/verify')
+  .get(verifyAuth)
 
 module.exports = router;

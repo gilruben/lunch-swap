@@ -14,7 +14,6 @@ export const loginAsync = (loginInfo) => (dispatch) => {
     type: 'POST',
     data: loginInfo,
     error(data){
-      //console.log('responseJSON: ',data.responseJSON.loginMsg)
       dispatch(log_in(data.responseJSON));
     }
   }).done((data) => {

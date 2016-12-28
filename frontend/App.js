@@ -5,10 +5,11 @@ import {Provider} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import store from './store/store.js';
-import LoginContainer from './containers/LoginContainer'
+import LoginContainer from './containers/LoginContainer';
 import LoggedIn from './components/LoggedIn';
-import NavSection from './components/NavSection'
-import FindFood from './components/FindFood'
+import NavSection from './components/NavSection';
+import FindFood from './components/FindFood';
+import { verify } from './route-utils';
 
 
 const App = (props) => {
@@ -20,18 +21,11 @@ const App = (props) => {
   )
 }
 
-// const verify = (nextState,replace) => {
-//   let info = {user: 'gilruben', password: 'nope'}
-//   if(){
-//
-//   }
-// }
-
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory} >
       <Route path="/signin" component={LoginContainer} />
-      <Route path="/" component={App}>
+      <Route path="/" component={App} onEnter={verify} >
         <Route path="findfood" component={FindFood} />
       </Route>
     </Router>

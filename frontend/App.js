@@ -8,7 +8,7 @@ import store from './store/store.js';
 import LoginContainer from './containers/LoginContainer';
 import LoggedIn from './components/LoggedIn';
 import NavSectionContainer from './containers/NavSectionContainer';
-import FindFood from './components/FindFood';
+import FindFoodContainer from './containers/FindFoodContainer';
 import { verify, verifySignedIn } from './route-utils';
 
 
@@ -26,7 +26,7 @@ ReactDOM.render(
     <Router history={browserHistory} >
       <Route path="/signin" component={LoginContainer} onEnter={verifySignedIn} />
       <Route path="/" component={App} onEnter={verify} >
-        <Route path="findfood" component={FindFood} />
+        <Route path="findfood" component={FindFoodContainer} />
       </Route>
     </Router>
   </Provider>,

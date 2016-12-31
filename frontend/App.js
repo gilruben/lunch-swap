@@ -7,7 +7,7 @@ import './App.css';
 import store from './store/store.js';
 import LoginContainer from './containers/LoginContainer';
 import LoggedIn from './components/LoggedIn';
-import NavSection from './components/NavSection';
+import NavSectionContainer from './containers/NavSectionContainer';
 import FindFood from './components/FindFood';
 import { verify, verifySignedIn } from './route-utils';
 
@@ -15,7 +15,7 @@ import { verify, verifySignedIn } from './route-utils';
 const App = (props) => {
   return (
     <div>
-      <NavSection/>
+      <NavSectionContainer/>
       {props.children}
     </div>
   )

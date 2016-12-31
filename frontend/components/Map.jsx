@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Map = React.createClass({
+  getInitialState(){
+    return {map: null}
+  },
   componentDidMount() {
+    
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
       center: new google.maps.LatLng(this.props.lat, this.props.lng),
@@ -14,6 +18,8 @@ const Map = React.createClass({
       position: latLng,
       map: map
     });
+
+    this.setState({map: map});
   },
   // componentWillReceiveProps(props) {
   //   var map = new google.maps.Map(document.getElementById('map'), {

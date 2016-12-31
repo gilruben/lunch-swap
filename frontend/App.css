@@ -34,6 +34,7 @@ html, body {
 }
 
 nav navbar-nav {
+  display: flex;
   float: none;
   width: 330px;
   margin-left: auto;
@@ -48,10 +49,11 @@ li {
   float: right;
 }
 
-.navbar {
-  display: flex;
-  justify-content: center;
+#logout {
+  cursor: pointer;
 }
+/*End of NavSection*/
+
 
 /*Login section*/
 #login-background {

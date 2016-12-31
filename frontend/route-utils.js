@@ -7,7 +7,6 @@ export const verifySignedIn = (nextState, replace, cb) => {
 }
 
 
-
 //When a route is passed as argument through the route parameter, its assumed
 //that the verify function is being used by the verifySignedIn function on the
 //'/signin' route. So if the user goes to the signin route and is

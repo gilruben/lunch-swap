@@ -22,17 +22,21 @@ const login = (req, res) => {
 
 const logout = (req, res) => {
   console.log('Before destroy: ', req.session);
-  req.session.destroy
+  req.session.destroy()
   console.log('After destroy: ', req.session);
+
+  res.sendStatus(200);
 }
 
 
 const verifyAuth = (req, res) => {
-  if(req.session.email){
-    console.log('Authorized');
+  let email = req.session.email
+
+  if(email){
+    console.log(`Authorized: Email ${email} has been verified`);
     res.sendStatus(200);
   } else {
-    console.log('Unauthorized');
+    console.log('Unauthorized: Login required');
     res.sendStatus(401);
   }
 }

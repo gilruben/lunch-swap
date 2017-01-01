@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+  var User = sequelize.define("user", {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,9 +25,10 @@ module.exports = function(sequelize, DataTypes) {
 
         User.belongsToMany(User, {
           as: 'friend',
-          through: "Friends",
-          onDelete: "CASCADE"
+          through: "Friends"
         });
+
+        User.hasMany(models.lunch);
       }
     }
   });

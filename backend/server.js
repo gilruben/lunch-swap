@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const db = require('./models');
 const app = express();
-const path = require('path')
+const path = require('path');
 const bodyParser = require('body-parser');
 const router = require('./routes');
 
@@ -25,6 +25,7 @@ db.sequelize.sync().then(() => {
   //api routes
   app.use('/api/user', router.user);
   app.use('/api/friends', router.friend);
+  app.use('/api/lunches', router.lunch);
 
   //route to frontend
   app.get('/*', (req, res) => {

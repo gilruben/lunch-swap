@@ -41,6 +41,22 @@ const verifyAuth = (req, res) => {
   }
 }
 
+const updateLocation = (req, res) => {
+  let email = req.session.email;
+  let location = req.body.location;
+  console.log('location:', location)
+
+  if(email && location){
+    let locationObj = {lat: parseFloat(location.lat), lng: parseFloat(location.lng)}
+    console.log('location(parsed):', locationObj)
+    req.session.location = locationObj;
+    req.session.save;
+
+    console.log('Location added to session:', req.session);
+    res.sendStatus(200)
+  }
+}
+
 
 router.route('/login')
   .post(login)
@@ -50,5 +66,8 @@ router.route('/logout')
 
 router.route('/verify')
   .get(verifyAuth)
+
+router.route('/updatelocation')
+  .post(updateLocation)
 
 module.exports = router;

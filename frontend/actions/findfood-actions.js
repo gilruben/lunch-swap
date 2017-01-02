@@ -13,5 +13,12 @@ export const updateMapAsync = (position) => (dispatch) => {
     lng: position.coords.longitude
   }
 
-  dispatch(update_map({pos}));
+  $.ajax({
+    url: '/auth/updatelocation',
+    type: 'POST',
+    data: {location: pos}
+  }).done(() => {
+    dispatch(update_map({pos}));
+  })
+
 }

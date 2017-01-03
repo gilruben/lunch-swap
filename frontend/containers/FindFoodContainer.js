@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {updateMapAsync} from '../actions/findfood-actions';
 import Map from '../components/Map';
+import LunchListContainer from '../containers/LunchListContainer';
 
 const FindFoodContainer = React.createClass({
   componentDidMount(){
@@ -12,7 +13,14 @@ const FindFoodContainer = React.createClass({
     navigator.geolocation.getCurrentPosition(updateMap);
   },
   render(){
-    return <Map map={this.props.findFood.map} />
+    return (
+      <div>
+        <div id="map-and-lunchlist">
+          <Map map={this.props.findFood.map} />
+          <LunchListContainer id="lunch-list"/>
+        </div>
+      </div>
+    )
   }
 })
 
